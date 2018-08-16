@@ -54,7 +54,6 @@ code {
 }
 
 .reveal h2 {
-  color: #dc7676;
   font-family: "ff-enzo-web" !important;
   font-weight: 500;
   text-transform: none !important;
@@ -71,6 +70,7 @@ h2.smaller {
   font-weight: 500;
   text-transform: none !important;
   font-size: 1.2em !important;
+  color: #dc7676;
 }
 
 #credit {
