@@ -64,6 +64,20 @@
       </section>
 
       <section>
+        <h2>GraphQL</h2>
+
+        <ul>
+          <li>A data query language</li>
+          <li class="fragment fade-in" data-fragment-index="1">Developed by Facebook</li>
+          <li class="fragment fade-in" data-fragment-index="2">Used internally since 2012</li>
+          <li class="fragment fade-in" data-fragment-index="3">Open source version published in July 2015</li>
+          <li class="fragment fade-in" data-fragment-index="4">Relay released in August 2015</li>
+          <li class="fragment fade-in" data-fragment-index="5">Specification: <a href="https://facebook.github.io/graphql"
+              target="_blank">https://facebook.github.io/graphql</a></li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Typical Rest API Flow</h2>
 
         <img src="assets/img/rest-api.svg" style="width: 80%">
@@ -100,125 +114,139 @@
       </section>
 
       <section>
-        <h3>GraphQL Approach</h3>
+        <h2>GraphQL Approach</h2>
         <img src="assets/img/graphql-solution.png" style="max-width: 70%">
       </section>
 
       <section>
-        <h2>GraphQL</h2>
+        <h2>Type System</h2>
 
-        <ul>
-          <li>A data query language</li>
-          <li class="fragment fade-in" data-fragment-index="1">Developed by Facebook</li>
-          <li class="fragment fade-in" data-fragment-index="2">Used internally since 2012</li>
-          <li class="fragment fade-in" data-fragment-index="3">Open source version published in July 2015</li>
-          <li class="fragment fade-in" data-fragment-index="4">Relay released in August 2015</li>
-          <li class="fragment fade-in" data-fragment-index="5">Specification: <a href="https://facebook.github.io/graphql"
-              target="_blank">https://facebook.github.io/graphql</a></li>
-        </ul>
+        <pre style="float: left; width: 60%">
+          <code data-trim contenteditable class="javascript">
+              type User {
+                id: Int!
+                name: String
+                age: Int
+              }
+          </code>
+        </pre>
+
+        <pre style="float: left; width: 40%" class="fragment fade-in" data-fragment-index="3">
+          <code data-trim contenteditable class="javascript">
+              type Query {
+                getUser(id: Int!): User
+                GetAllUsers: [User]
+              }
+          </code>
+        </pre>
+
+        <pre style="float: left; width: 60%" class="fragment fade-in" data-fragment-index="1">
+          <code data-trim contenteditable class="javascript">
+              type Mutation {
+                createUser(name: String!): User!
+                updateUser(id: Int!, name: String!): User!
+                deleteUser(id: Int!): Response!
+              }
+          </code>
+        </pre>
+
+        <pre style="float: left; width: 60%" class="fragment fade-in" data-fragment-index="2">
+          <code data-trim contenteditable class="javascript">
+              type Subscription {
+                userCreated: User
+              }
+          </code>
+        </pre>
       </section>
 
       <section>
-        <h2>Response Structure</h2>
+        <h2>Query 1/2</h2>
 
-        <pre style="float: left; width: 50%"><code data-trim contenteditable class="javascript">
-query GetUser {
-  user(id: 123) {
-    name
-    age
+        <pre style="float: left; width: 50%">
+          <code data-trim contenteditable class="javascript">
+            query {
+              GetAllUsers {
+                id
+                name
+                age
+              }
+            }
+          </code>
+        </pre>
 
-    picture {
-      width
-      height
-      url
-    }
-  }
-}
-          </code></pre>
-
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1"><code data-trim contenteditable class="javascript">
-{
-  "data": {
-    "user": {
-      "name": "Stephen",
-      "age": 27
-
-      "picture": {
-        "width": 150,
-        "height": 150,
-        "url": "http://..."
-      }
-    }
-  }
-}
-          </code></pre>
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
+          <code data-trim contenteditable class="javascript">
+            {
+              "data": {
+                "GetAllUsers": [
+                {
+                  "id": 1,
+                  "name": "Stephen",
+                  "age": 27
+                },
+                {
+                  "id": 2,
+                  "name": "Cheng",
+                  "age": 28
+                }
+                ]
+              }
+            }
+          </code>
+        </pre>
       </section>
 
       <section>
-        <h2>Every field Is a Function</h2>
+        <h2>Query 2/2</h2>
 
-        <pre style="float: left; width: 50%"><code data-trim contenteditable class="javascript">
-query GetUser {
-  users {
-    picture(size: 300) {
-      width,
-      height,
-      url
-    }
-  }
-}
-          </code></pre>
+        <pre style="float: left; width: 50%">
+          <code data-trim contenteditable class="javascript">
+            query ($id: Int!) {
+              getUser(id: $id) {
+                name
+                age
+              }
+            }
+          </code>
+        </pre>
 
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1"><code data-trim contenteditable class="javascript">
-{
-  "data": {
-    "users": [
-      {
-        "picture": {
-          "width": 300,
-          "height": 300,
-          "url": "http://..."
-        }
-      },
-      ...
-    ]
-  }
-}
-          </code></pre>
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
+          <code data-trim contenteditable class="javascript">
+            {
+              "data": {
+                "getUser": {
+                  "name": "Stephen",
+                  "age": 27
+                }
+              }
+            }
+          </code>
+        </pre>
       </section>
 
       <section>
-        <h2>Aliases</h2>
+        <h2>Mutation</h2>
 
         <pre style="float: left; width: 50%"><code data-trim contenteditable class="javascript">
-query GetUser {
-  users {
-    thumb: picture(size: 100) {
-      width
-    }
-    fullSize: picture(size: 500) {
-      width
-    }
-  }
-}
+            mutation ($id: Int!, $name: String!) {
+              updateUser(id: $id, name: $name) {
+                id
+                name
+              }
+            }
           </code></pre>
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1"><code data-trim contenteditable class="javascript">
-{
-  "data": {
-    "users": [
-      {
-        "thumb": {
-          "width": 100
-        },
-        "fullSize": {
-          "width": 500
-        }
-      },
-      ...
-    ]
-  }
-}
+            {
+              "data": {
+                "updateUser": 
+                  {
+                   "id": 1,
+                   "name": "Stephen new"
+                  }
+                ]
+              }
+            }
           </code></pre>
       </section>
 
@@ -227,88 +255,8 @@ query GetUser {
       </section>
 
       <section>
-        <h2>Type System</h2>
-
-        <pre style="float: left; width: 60%"><code data-trim contenteditable class="javascript">
-type Picture {
-  width: Int!
-  height: Int!
-  url: String
-}
-          </code></pre>
-
-        <pre style="float: left; width: 40%" class="fragment fade-in" data-fragment-index="3"><code data-trim contenteditable class="javascript">
-type Query {
-  user(id: Int!): User
-  users: [User]
-}
-          </code></pre>
-
-        <pre style="float: left; width: 60%" class="fragment fade-in" data-fragment-index="1"><code data-trim contenteditable class="javascript">
-interface Identifiable {
-  id: String!
-}
-          </code></pre>
-
-        <pre style="float: left; width: 60%" class="fragment fade-in" data-fragment-index="2"><code data-trim contenteditable class="javascript">
-type User implements Identifiable {
-  id: String!
-  name: String!
-  age: Int
-  picture(size: Int): Picture
-}
-          </code></pre>
-      </section>
-
-      <section>
-        <h2>Mutations & Subscriptions</h2>
-
-        <pre><code data-trim contenteditable class="javascript">
-mutation ChangeStaff {
-  changeName(userId: 123, newName: "Cheng") {
-    id, name
-  }
-
-  setAge(userId: 123, age: 26) {
-    id, age
-  }
-}
-
-subscription UserEvents {
-  nameChanged(userId: 123) { name }
-  userDeleted { id }
-}
-          </code></pre>
-      </section>
-
-      <section>
         <h2>Demo Time</h2>
         <!-- GrpahiQL, Fragments, Introspection, docs -->
-
-        <pre><code class="javascript" data-trim contenteditable>
-{
-  user {
-    id
-    name
-  }
-}
-
-// Response
-{
-  "data": {
-    "user": {
-      "id": "2001",
-      "name": "R2-D2"
-    }
-  }
-}
-          </code></pre>
-      </section>
-
-      <section>
-        <h2>Backend Agnostic</h2>
-
-        <img src="assets/img/app-layers.svg" style="width: 75%">
       </section>
 
       <section>
@@ -340,57 +288,7 @@ subscription UserEvents {
           <div class="impl-logo fragment fade-in" data-fragment-index="6"><a href="https://github.com/graphql-dotnet/graphql-dotnet"><img
                 src="assets/img/csharp-logo.png"></a></div>
         </div>
-
       </section>
-
-      <section>
-        <h2>Example: JavaScript</h2>
-
-        <pre><code data-trim contenteditable class="javascript">
-          type User {
-            id: Int
-            name: String
-          }
-        
-          type Response {
-            success: Boolean!
-          }
-        
-          type Query {
-            getTime: [Time!]!
-            getUsers: [User!]!
-          }
-        
-          type Mutation {
-            createUser(name: String!): User!
-            updateUser(id: Int!, name: String!): User!
-            deleteUser(id: Int!): Response!
-          }
-        
-          type Subscription {
-            timeCreated: Time
-          }
-          </code></pre>
-      </section>
-
-      <!-- <section>
-        <h2>Example: Scala</h2>
-
-        <pre><code data-trim contenteditable class="scala">
-val ProductType = ObjectType(
-  "Product",
-  "Commodity available for purchase",
-  fields[Unit, Product](
-    Field("id", StringType,
-      resolve = _.value.id),
-    Field("onStock", IntType,
-      resolve = _.value.onStock + 10)))
-          </code></pre>
-
-        <pre class="fragment roll-in" data-fragment-index="1"><code data-trim contenteditable class="scala">
-val ProductType = deriveObjectType[Unit, Product]()
-          </code></pre>
-      </section> -->
 
       <section data-background="#D45CA2" class="first-slide">
         <h1>Thank you!</h1>
