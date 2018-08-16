@@ -66,12 +66,12 @@
       <section>
         <img src="assets/img/whatisgraphql.png" style="width: 50%">
         <ul>
-          <li>A data query language</li>
-          <li class="fragment fade-in" data-fragment-index="1">Developed by Facebook</li>
-          <li class="fragment fade-in" data-fragment-index="2">Used internally since 2012</li>
-          <li class="fragment fade-in" data-fragment-index="3">Open source version published in July 2015</li>
-          <li class="fragment fade-in" data-fragment-index="4">Relay released in August 2015</li>
-          <li class="fragment fade-in" data-fragment-index="5">Specification: <a href="https://facebook.github.io/graphql"
+          <li class="fragment fade-in" data-fragment-index="1">A data query language</li>
+          <li class="fragment fade-in" data-fragment-index="2">Developed by Facebook</li>
+          <li class="fragment fade-in" data-fragment-index="3">Used internally since 2012</li>
+          <li class="fragment fade-in" data-fragment-index="4">Open source version published in 7/2015</li>
+          <li class="fragment fade-in" data-fragment-index="5">Relay released in 8/2015</li>
+          <li class="fragment fade-in" data-fragment-index="6">Specification: <a href="https://facebook.github.io/graphql"
               target="_blank">https://facebook.github.io/graphql</a></li>
         </ul>
       </section>
@@ -120,7 +120,7 @@
       <section>
         <h2>Type System</h2>
 
-        <pre style="float: left; width: 60%">
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code data-trim contenteditable class="javascript">
               type User {
                 id: Int!
@@ -130,7 +130,7 @@
           </code>
         </pre>
 
-        <pre style="float: left; width: 40%" class="fragment fade-in" data-fragment-index="3">
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code data-trim contenteditable class="javascript">
               type Query {
                 getUser(id: Int!): User
@@ -139,7 +139,7 @@
           </code>
         </pre>
 
-        <pre style="float: left; width: 60%" class="fragment fade-in" data-fragment-index="1">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="3">
           <code data-trim contenteditable class="javascript">
               type Mutation {
                 createUser(name: String!): User!
@@ -149,7 +149,7 @@
           </code>
         </pre>
 
-        <pre style="float: left; width: 60%" class="fragment fade-in" data-fragment-index="2">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="4">
           <code data-trim contenteditable class="javascript">
               type Subscription {
                 userCreated: User
@@ -161,7 +161,7 @@
       <section>
         <h2>Query 1/2</h2>
 
-        <pre style="float: left; width: 50%">
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code data-trim contenteditable class="javascript">
             query {
               GetAllUsers {
@@ -173,7 +173,7 @@
           </code>
         </pre>
 
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code data-trim contenteditable class="javascript">
             {
               "data": {
@@ -198,7 +198,7 @@
       <section>
         <h2>Query 2/2</h2>
 
-        <pre style="float: left; width: 50%">
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code data-trim contenteditable class="javascript">
             query ($id: Int!) {
               getUser(id: $id) {
@@ -209,7 +209,7 @@
           </code>
         </pre>
 
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code data-trim contenteditable class="javascript">
             {
               "data": {
@@ -226,16 +226,19 @@
       <section>
         <h2>Mutation</h2>
 
-        <pre style="float: left; width: 50%"><code data-trim contenteditable class="javascript">
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
+          <code data-trim contenteditable class="javascript">
             mutation ($id: Int!, $name: String!) {
               updateUser(id: $id, name: $name) {
                 id
                 name
               }
             }
-          </code></pre>
+          </code>
+        </pre>
 
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1"><code data-trim contenteditable class="javascript">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
+          <code data-trim contenteditable class="javascript">
             {
               "data": {
                 "updateUser": 
@@ -246,7 +249,8 @@
                 ]
               }
             }
-          </code></pre>
+          </code>
+        </pre>
       </section>
 
       <section>
