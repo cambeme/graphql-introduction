@@ -121,7 +121,7 @@
         <h2>Type System</h2>
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
               type User {
                 id: Int!
                 name: String
@@ -130,15 +130,15 @@
           </code>
         </pre>
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
-            <code data-trim contenteditable class="javascript">
+            <code contenteditable class="javascript">
               type Query {
                 getUser(id: Int!): User
                 GetAllUsers: [User]
               }
             </code>
         </pre>
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="3">
-          <code data-trim contenteditable class="javascript">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="3">
+          <code contenteditable class="javascript">
               type Mutation {
                 createUser(name: String!): User!
                 updateUser(id: Int!, name: String!): User!
@@ -146,8 +146,8 @@
               }
           </code>
         </pre>
-        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="4">
-          <code data-trim contenteditable class="javascript">
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="4">
+          <code contenteditable class="javascript">
               type Subscription {
                 userCreated: User
               }
@@ -159,7 +159,7 @@
         <h2>Query 1/2</h2>
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
             query {
               GetAllUsers {
                 id
@@ -171,7 +171,7 @@
         </pre>
 
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
             {
               "data": {
                 "GetAllUsers": [
@@ -196,7 +196,7 @@
         <h2>Query 2/2</h2>
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
             query ($id: Int!) {
               getUser(id: $id) {
                 name
@@ -207,7 +207,7 @@
         </pre>
 
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
             {
               "data": {
                 "getUser": {
@@ -224,7 +224,7 @@
         <h2>Mutation</h2>
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
             mutation ($id: Int!, $name: String!) {
               updateUser(id: $id, name: $name) {
                 id
@@ -235,7 +235,7 @@
         </pre>
 
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
-          <code data-trim contenteditable class="javascript">
+          <code contenteditable class="javascript">
             {
               "data": {
                 "updateUser": 
@@ -248,15 +248,6 @@
             }
           </code>
         </pre>
-      </section>
-
-      <section>
-        <img src="assets/img/data-requirements.svg">
-      </section>
-
-      <section>
-        <h2>Demo Time</h2>
-        <!-- GrpahiQL, Fragments, Introspection, docs -->
       </section>
 
       <section>
@@ -301,8 +292,11 @@
         <br><br>
         <h2 class="fragment roll-in" data-fragment-index="3" style="opacity: 0.7;">Questions?</h2>
       </section>
-    </div>
 
+      <section>
+        <h2>Demo Time</h2>
+      </section>
+    </div>
   </div>
 
   <script src="lib/js/head.min.js"></script>
