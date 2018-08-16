@@ -129,17 +129,7 @@
               }
           </code>
         </pre>
-
-        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="2">
-          <code data-trim contenteditable class="javascript">
-              type Query {
-                getUser(id: Int!): User
-                GetAllUsers: [User]
-              }
-          </code>
-        </pre>
-
-        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="3">
+        <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code data-trim contenteditable class="javascript">
               type Mutation {
                 createUser(name: String!): User!
@@ -148,7 +138,14 @@
               }
           </code>
         </pre>
-
+        <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="3">
+            <code data-trim contenteditable class="javascript">
+                type Query {
+                  getUser(id: Int!): User
+                  GetAllUsers: [User]
+                }
+            </code>
+          </pre>
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="4">
           <code data-trim contenteditable class="javascript">
               type Subscription {
