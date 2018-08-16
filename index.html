@@ -122,35 +122,35 @@
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code contenteditable class="javascript">
-              type User {
-                id: Int!
-                name: String
-                age: Int
-              }
+type User {
+  id: Int!
+  name: String
+  age: Int
+}
           </code>
         </pre>
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
-            <code contenteditable class="javascript">
-              type Query {
-                getUser(id: Int!): User
-                GetAllUsers: [User]
-              }
-            </code>
+          <code contenteditable class="javascript">
+type Query {
+  getUser(id: Int!): User
+  GetAllUsers: [User]
+}
+          </code>
         </pre>
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="3">
           <code contenteditable class="javascript">
-              type Mutation {
-                createUser(name: String!): User!
-                updateUser(id: Int!, name: String!): User!
-                deleteUser(id: Int!): Response!
-              }
+type Mutation {
+  createUser(name: String!): User!
+  updateUser(id: Int!, name: String!): User!
+  deleteUser(id: Int!): Response!
+}
           </code>
         </pre>
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="4">
           <code contenteditable class="javascript">
-              type Subscription {
-                userCreated: User
-              }
+type Subscription {
+  userCreated: User
+}
           </code>
         </pre>
       </section>
@@ -160,34 +160,34 @@
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code contenteditable class="javascript">
-            query {
-              GetAllUsers {
-                id
-                name
-                age
-              }
-            }
+query {
+  GetAllUsers {
+    id
+    name
+    age
+  }
+}
           </code>
         </pre>
 
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code contenteditable class="javascript">
-            {
-              "data": {
-                "GetAllUsers": [
-                {
-                  "id": 1,
-                  "name": "Stephen",
-                  "age": 27
-                },
-                {
-                  "id": 2,
-                  "name": "Cheng",
-                  "age": 28
-                }
-                ]
-              }
-            }
+{
+  "data": {
+    "GetAllUsers": [
+    {
+      "id": 1,
+      "name": "Stephen",
+      "age": 27
+    },
+    {
+      "id": 2,
+      "name": "Cheng",
+      "age": 28
+    }
+    ]
+  }
+}
           </code>
         </pre>
       </section>
@@ -197,25 +197,25 @@
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code contenteditable class="javascript">
-            query ($id: Int!) {
-              getUser(id: $id) {
-                name
-                age
-              }
-            }
+query ($id: Int!) {
+  getUser(id: $id) {
+    name
+    age
+  }
+}
           </code>
         </pre>
 
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code contenteditable class="javascript">
-            {
-              "data": {
-                "getUser": {
-                  "name": "Stephen",
-                  "age": 27
-                }
-              }
-            }
+{
+  "data": {
+    "getUser": {
+      "name": "Stephen",
+      "age": 27
+    }
+  }
+}
           </code>
         </pre>
       </section>
@@ -225,27 +225,27 @@
 
         <pre style="float: left; width: 50%" class="fragment fade-in" data-fragment-index="1">
           <code contenteditable class="javascript">
-            mutation ($id: Int!, $name: String!) {
-              updateUser(id: $id, name: $name) {
-                id
-                name
-              }
-            }
+mutation ($id: Int!, $name: String!) {
+  updateUser(id: $id, name: $name) {
+    id
+    name
+  }
+}
           </code>
         </pre>
 
         <pre style="float: right; width: 50%" class="fragment fade-in" data-fragment-index="2">
           <code contenteditable class="javascript">
-            {
-              "data": {
-                "updateUser": 
-                  {
-                   "id": 1,
-                   "name": "Stephen new"
-                  }
-                ]
-              }
-            }
+{
+  "data": {
+    "updateUser": 
+      {
+        "id": 1,
+        "name": "Stephen new"
+      }
+    ]
+  }
+}
           </code>
         </pre>
       </section>
